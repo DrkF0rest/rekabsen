@@ -38,6 +38,7 @@ run "Installing packages" apt-get install -y -qq git python3 python3-venv python
 
 step 2 "Repository"
 run "Cloning repository" git clone --depth 1 --branch rekabsen-adms "$REPO"
+mkdir -p "$APP_DIR"
 mv "$APP_NAME/adms_server.py" "$APP_DIR"
 mv "$APP_NAME/requirements.txt" "$APP_DIR"
 mv "$APP_NAME/adms" "$APP_DIR"
