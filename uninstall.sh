@@ -132,14 +132,6 @@ else
     warning "CLI command not found"
 fi
 
-# 6. Remove system user
-if id "$APP_NAME" >/dev/null 2>&1; then
-    userdel "$APP_NAME"
-    success "System user removed"
-else
-    warning "System user not found"
-fi
-
 rm -rf ../rekabsen-adms
 cd
 success "Removing application files"
