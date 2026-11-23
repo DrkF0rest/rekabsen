@@ -77,7 +77,7 @@ step 6 "Service"
 cat > /usr/local/bin/rekabsen <<'EOF'
 #!/bin/bash
 S=rekabsen
-APP_DIR=/etc/rekabsen-adms
+APP_DIR=/etc/rekabsen
 LOG_DIR=/var/log/rekabsen
 
 PINK='\033[38;5;197m' GREEN='\033[38;5;148m' PURPLE='\033[38;5;141m'
