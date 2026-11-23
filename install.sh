@@ -27,7 +27,7 @@ run() {
 }
 
 [[ $EUID -eq 0 ]] || die "Run as root"
-[[ ! -e $DIR ]]   || die "$DIR already exists"
+[[ ! -e $APP_DIR ]]   || die "$APP_DIR already exists"
 
 echo -e "\n${GRAY}REKABSEN by DrkF0rest${RESET} ${PURPLE}installer${RESET}\n${GRAY}────────────────────────────────────${RESET}"
 
@@ -37,34 +37,38 @@ run "Updating package index" apt-get update -qq
 run "Installing packages" apt-get install -y -qq git python3 python3-venv python3-pip
 
 step 2 "Repository"
-run "Cloning repository" git clone --depth 1 --branch rekabsen-adms "$REPO" "$DIR"
-[[ -f $DIR/adms_server.py ]] || die "adms_server.py not found"
+run "Cloning repository" git clone --depth 1 --branch rekabsen-adms "$REPO"
+[[ -f $APP_DIR/adms_server.py ]] || die "adms_server.py not found"
+mv "$APP_NAME/adms_server.py" "$APP_DIR"
+mv "$APP_NAME/requirements.txt" "$APP_DIR"
+mv "$APP_NAME/adms" "$APP_DIR"
+mv "$APP_NAME/backend" "$APP_DIR"
 
 step 3 "Python environment"
-run "Creating virtualenv" python3 -m venv "$DIR/venv"
-[[ -f $DIR/requirements.txt ]] && run "Installing Python packages" "$DIR/venv/bin/pip" install -q -r "$DIR/requirements.txt"
+run "Creating virtualenv" python3 -m venv "$APP_DIR/venv"
+[[ -f $APP_DIR/requirements.txt ]] && run "Installing Python packages" "$APP_DIR/venv/bin/pip" install -q -r "$APP_DIR/requirements.txt"
 
 step 4 "Permissions & logging"
-id $APP &>/dev/null || useradd --system --no-create-home --shell /usr/sbin/nologin $APP
-mkdir -p "$LOG"
-chown -R $APP:$APP "$DIR" "$LOG"
+id $APP_NAME &>/dev/null || useradd --system --no-create-home --shell /usr/sbin/nologin $APP_NAME
+mkdir -p "$LOG_DIR"
+chown -R $APP_NAME:$APP_NAME "$APP_DIR" "$LOG_DIR"
 ok "Permissions configured"
 
 step 5 "Systemd"
-cat > /etc/systemd/system/$APP.service <<EOF
+cat > /etc/systemd/system/$APP_NAME.service <<EOF
 [Unit]
 Description=Rekabsen ADMS Server by DrkF0rest
 After=network.target
 
 [Service]
-User=$APP
-Group=$APP
-WorkingDirectory=$DIR
-ExecStart=$DIR/venv/bin/python3 $DIR/adms_server.py
+User=$APP_NAME
+Group=$APP_NAME
+WorkingDirectory=$APP_DIR
+ExecStart=$APP_DIR/venv/bin/python3 $APP_DIR/adms_server.py
 Restart=on-failure
 RestartSec=5
-StandardOutput=append:$LOG/access.log
-StandardError=append:$LOG/error.log
+StandardOutput=append:$LOG_DIR/access.log
+StandardError=append:$LOG_DIR/error.log
 
 [Install]
 WantedBy=multi-user.target

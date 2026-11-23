@@ -145,10 +145,6 @@ else
     warning "System user not found"
 fi
 
-rm -rf ../rekabsen-adms
-cd
-success "Removing application files"
-
 echo ""
 echo -e "${GRAY}────────────────────────────────────${RESET}"
 echo -e "${GREEN}  Uninstallation completed${RESET}"
