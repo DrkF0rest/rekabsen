@@ -128,6 +128,16 @@ tabs.forEach(tab => {
   });
 });
 
+copyBtn.addEventListener('click', function () {
+  const activePanel = document.querySelector('.terminal-panel.active');
+  if (activePanel) {
+    // decode HTML entities from data-copy
+    const raw = activePanel.dataset.copy;
+    const decoded = raw.replace(/&amp;/g, '&').replace(/&#10;/g, '\n');
+    copyText(decoded, this, 'Command copied!');
+  }
+});
+
 /* ---- Tabbed uninstall terminal ---- */
 const uninstallTabs = document.querySelectorAll('.uninstall-terminal-tab');
 const uninstallPanels = document.querySelectorAll('.uninstall-terminal-panel');
