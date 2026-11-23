@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -Eeuo pipefail
 
 APP_NAME="rekabsen"
 APP_DIR="/etc/rekabsen"
@@ -53,7 +53,7 @@ run() {
     while kill -0 "$pid" 2>/dev/null; do
         printf "\r  ${PINK}%s${RESET} %s" \
             "${SPINNER[$((i % ${#SPINNER[@]}))]}" "$message"
-        i=$((i + 1))
+        ((i+=1))
         sleep 0.1
     done
 
@@ -82,17 +82,12 @@ echo "  - Application logs"
 echo "  - CLI command"
 echo ""
 
-read -r -p "Continue uninstall? [y/N]: " CONFIRM
+read -r -p "Continue uninstall? [y/N]: " CONFIRM < /dev/tty
 
-case "$CONFIRM" in
-    [yY]|[yY][eE][sS])
-        echo "Starting uninstallation..."
-        ;;
-    *)
-        warning "Uninstallation cancelled"
-        exit 0
-        ;;
-esac
+if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
+    warning "Uninstallation cancelled"
+    exit 0
+fi
 
 echo ""
 
@@ -144,6 +139,10 @@ if id "$APP_NAME" >/dev/null 2>&1; then
 else
     warning "System user not found"
 fi
+
+rm -rf ../rekabsen-adms
+cd
+success "Removing application files"
 
 echo ""
 echo -e "${GRAY}────────────────────────────────────${RESET}"
