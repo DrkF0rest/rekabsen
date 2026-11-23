@@ -70,7 +70,7 @@ run() {
 [[ $EUID -eq 0 ]] || fail "Please run as root"
 
 echo ""
-echo -e "${GRAY}rekabsen-adms${RESET} ${PURPLE}uninstaller${RESET} ${GRAY}v1.0.0${RESET}"
+echo -e "${GRAY}rekabsen-adms${RESET} ${PURPLE}uninstaller${RESET} ${GRAY}${RESET}"
 echo -e "${GRAY}────────────────────────────────────${RESET}"
 echo ""
 echo "The following components will be removed:"
@@ -132,8 +132,13 @@ else
     warning "CLI command not found"
 fi
 
-rm -rf ../rekabsen-adms
-cd
+# 6. Remove user
+if id "$APP_NAME" &>/dev/null; then
+    userdel "$APP_NAME" >/dev/null 2>&1 || true
+    success "User removed"
+else
+    warning "User not found"
+fi
 success "Removing application files"
 
 echo ""
