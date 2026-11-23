@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-APP_NAME=rekabsen
+APP_NAME=rekabsen-adms
 REPO=https://github.com/DrkF0rest/rekabsen-adms.git
 APP_DIR=/etc/rekabsen
 LOG_DIR=/var/log/rekabsen
