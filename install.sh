@@ -5,6 +5,7 @@ APP_NAME=rekabsen-adms
 REPO=https://github.com/DrkF0rest/rekabsen-adms.git
 APP_DIR=/etc/rekabsen
 LOG_DIR=/var/log/rekabsen
+APP=rekabsen
 
 # Monokai
 PINK='\033[38;5;197m' GREEN='\033[38;5;148m' YELLOW='\033[38;5;186m'
