@@ -1410,20 +1410,6 @@ ol {
   flex: 1;
 }
 
-.doc-card-link {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: gap var(--transition);
-}
-
-.doc-card:hover .doc-card-link {
-  gap: 8px;
-}
-
 /* ============================================================
    OPEN SOURCE SECTION
    ============================================================ */
