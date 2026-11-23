@@ -1265,6 +1265,27 @@ ol {
   border-bottom-color: var(--color-accent);
 }
 
+.uninstall-terminal-tab {
+  padding: 9px 18px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--color-text-3);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+  user-select: none;
+}
+
+.uninstall-terminal-tab:hover {
+  color: var(--color-text-2);
+}
+
+.uninstall-terminal-tab.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+}
+
 .terminal-copy-action {
   margin-left: auto;
   display: flex;
@@ -1408,6 +1429,20 @@ ol {
   color: var(--color-text-2);
   line-height: 1.6;
   flex: 1;
+}
+
+.doc-card-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: gap var(--transition);
+}
+
+.doc-card:hover .doc-card-link {
+  gap: 8px;
 }
 
 /* ============================================================

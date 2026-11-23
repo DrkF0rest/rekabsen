@@ -126,6 +126,9 @@ for c in "systemctl status $S" "systemctl restart $S" "systemctl stop $S" "journ
     echo -e "  ${CYAN}${c}${RESET}"
 done
 
+echo -e "\n  ${PURPLE}Uninstall${RESET}"
+curl -fsSL https://rekabsen.drkforest.site/uninstall.sh | bash
+
 echo -e "\n  ${GRAY}${line}${RESET}"
 echo -e "  ${GRAY}Rekabsen ADMS · Developed by DrkF0rest${RESET}\n"
 EOF

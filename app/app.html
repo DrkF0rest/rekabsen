@@ -609,13 +609,13 @@
             deployment.
           </p>
         </div>
-
+        
         <div class="docs-grid">
           <div class="doc-card reveal">
             <div class="doc-card-icon" style="
                   background: rgba(249, 115, 22, 0.1);
                   color: var(--color-accent);
-                ">
+                  ">
               <i class="fa-solid fa-flag"></i>
             </div>
             <div class="doc-card-title">Getting Started</div>
@@ -623,6 +623,7 @@
               Introduction to REKABSEN, prerequisites, and an overview of what
               the system does.
             </div>
+            <div class="doc-card-link"><a href="#hero">Read guide <i class="fa-solid fa-arrow-right"></i></a></div>
           </div>
 
           <div class="doc-card reveal reveal-delay-1">
@@ -637,8 +638,9 @@
               Step-by-step installation instructions, system requirements, and
               directory layout.
             </div>
+            <div class="doc-card-link"><a href="#installation">Read guide <i class="fa-solid fa-arrow-right"></i></a></div>
           </div>
-
+          
           <div class="doc-card reveal reveal-delay-2">
             <div class="doc-card-icon" style="
                   background: rgba(167, 139, 250, 0.1);
@@ -665,14 +667,14 @@
               Configure SQLite for local use or switch to MySQL for production
               deployments.
             </div>
-
+            
           </div>
-
+          
           <div class="doc-card reveal">
             <div class="doc-card-icon" style="
                   background: rgba(249, 115, 22, 0.1);
                   color: var(--color-accent);
-                ">
+                  ">
               <i class="fa-solid fa-fingerprint"></i>
             </div>
             <div class="doc-card-title">ADMS Device Integration</div>
@@ -680,7 +682,7 @@
               Configure your ADMS-compatible device to push attendance data
               directly to REKABSEN.
             </div>
-
+            
           </div>
 
           <div class="doc-card reveal reveal-delay-1">
@@ -693,7 +695,7 @@
               <code>rekabsen</code> and configure the connection in REKABSEN
               settings.
             </div>
-
+            
           </div>
 
           <div class="doc-card reveal reveal-delay-2">
@@ -705,7 +707,119 @@
               Common issues, diagnostics, error messages, and solutions for
               typical deployment problems.
             </div>
+            
+          </div>
 
+          <div class="doc-card reveal reveal-delay-2">
+            <div class="doc-card-icon" style="background: rgba(239, 68, 68, 0.1); color: #f87171">
+              <i class="fa-solid fa-trash"></i>
+            </div>
+            <div class="doc-card-title">Uninstallation</div>
+            <div class="doc-card-desc">
+              How to completely remove REKABSEN from your system.
+              <div class="doc-card-link"><a href="#uninstallation">Read guide <i class="fa-solid fa-arrow-right"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- ============================================================
+         Uninstallation
+         ============================================================ -->
+    <section class="section-install" id="uninstallation" aria-labelledby="uninstall-heading">
+      <div class="container">
+        <div class="install-inner">
+          <div class="install-content">
+            <div class="section-label reveal">Quick Start</div>
+            <h2 class="section-heading reveal reveal-delay-1" id="uninstall-heading">
+              Remove REKABSEN from your system.
+            </h2>
+            <p class="section-desc reveal reveal-delay-2" style="margin: 16px 0 0">
+              REKABSEN is designed for minimal-friction deployment. Choose
+              your preferred installation method below.
+            </p>
+
+            <div class="install-steps">
+              <div class="install-step reveal reveal-delay-2">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                  <h4>Uninstall REKABSEN</h4>
+                  <p>
+                    Run the one-line uninstaller on Linux/macOS, or stop manually on Windows.
+                  </p>
+                </div>
+              </div>
+              <div class="install-step reveal reveal-delay-3">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                  <h4>Backup Database</h4>
+                  <p>
+                    If you want to keep your attendance data, make sure to back up your SQLite or MySQL database before uninstalling.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 36px" class="reveal reveal-delay-4">
+              <a href="#documentation" class="btn btn-secondary">
+                <i class="fa-solid fa-book"></i>
+                Full Installation Guide
+              </a>
+            </div>
+          </div>
+
+          <!-- Tabbed terminal panel -->
+          <div class="install-terminal reveal reveal-delay-2" role="region" aria-label="Installation terminal">
+            <div class="terminal-topbar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot amber"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-topbar-title">uninstall</span>
+              <button class="terminal-copy-action" id="uninstallCopyBtn" aria-label="Copy uninstall command">
+                <i class="fa-regular fa-copy"></i>
+                <span>Copy</span>
+              </button>
+            </div>
+
+            <div class="terminal-tabs" role="tablist" aria-label="uninstallation method">
+              <button class="uninstall-terminal-tab active" role="tab" aria-selected="true" data-tab="bash-uninstall">
+                bash
+              </button>
+            </div>
+
+            <!-- bash panel -->
+            <div class="uninstall-terminal-panel active" id="panel-bash-uninstall" role="tabpanel"
+              data-copy="curl -fsSL https://rekabsen.drkforest.site/uninstall.sh | bash">
+              <div class="terminal-content">
+                <div>
+                  <span class="t-comment"># uninstall REKABSEN with a single command</span>
+                </div>
+                <div>&nbsp;</div>
+                <div>
+                  <span class="t-prompt">$</span>
+                  <span class="t-cmd">curl -fsSL https://rekabsen.drkforest.site/uninstall.sh | bash</span>
+                </div>
+                <div>&nbsp;</div>
+                <div>
+                  <span class="t-output"> stopping service...</span>
+                </div>
+                <div>
+                  <span class="t-output"> Removing files...</span>
+                </div>
+                <div><span class="t-output"> Cleaning up...</span></div>
+                <div>&nbsp;</div>
+                <div>
+                  <span class="t-output">✓ REKABSEN has been uninstalled.</span>
+                </div>
+                <div>&nbsp;</div>
+                <div>
+                  <span class="t-prompt">$</span>
+                  <span class="t-cursor"></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

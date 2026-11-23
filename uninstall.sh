@@ -55,7 +55,7 @@ run() {
     while kill -0 "$pid" 2>/dev/null; do
         printf "\r  ${PINK}%s${RESET} %s" \
             "${SPINNER[$((i % ${#SPINNER[@]}))]}" "$message"
-        ((i+=1))
+        i=$((i + 1))
         sleep 0.1
     done
 
@@ -86,10 +86,15 @@ echo ""
 
 read -r -p "Continue uninstall? [y/N]: " CONFIRM
 
-if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
-    warning "Uninstallation cancelled"
-    exit 0
-fi
+case "$CONFIRM" in
+    [yY]|[yY][eE][sS])
+        echo "Starting uninstallation..."
+        ;;
+    *)
+        warning "Uninstallation cancelled"
+        exit 0
+        ;;
+esac
 
 echo ""
 

@@ -128,8 +128,32 @@ tabs.forEach(tab => {
   });
 });
 
-copyBtn.addEventListener('click', function () {
-  const activePanel = document.querySelector('.terminal-panel.active');
+/* ---- Tabbed uninstall terminal ---- */
+const uninstallTabs = document.querySelectorAll('.uninstall-terminal-tab');
+const uninstallPanels = document.querySelectorAll('.uninstall-terminal-panel');
+const uninstallCopyBtn = document.getElementById('uninstallCopyBtn');
+
+uninstallTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    uninstallTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+    uninstallPanels.forEach(p => p.classList.remove('active'));
+
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    const panel = document.getElementById('panel-' + tab.dataset.tab);
+    if (panel) panel.classList.add('active');
+
+    // reset copy button state
+    uninstallCopyBtn.classList.remove('copied');
+    const icon = uninstallCopyBtn.querySelector('i');
+    const span = uninstallCopyBtn.querySelector('span');
+    if (icon) icon.className = 'fa-regular fa-copy';
+    if (span) span.textContent = 'Copy';
+  });
+});
+
+uninstallCopyBtn.addEventListener('click', function () {
+  const activePanel = document.querySelector('.uninstall-terminal-panel.active');
   if (activePanel) {
     // decode HTML entities from data-copy
     const raw = activePanel.dataset.copy;
