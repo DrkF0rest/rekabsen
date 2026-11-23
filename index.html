@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <meta http-equiv="refresh" content="0; url=app/app.html" />
+  <link rel="canonical" href="app/app.html" />
+  <title>REKABSEN — Redirecting…</title>
+
+  <script>
+    /* Instant redirect (takes over before meta refresh in modern browsers) */
+    window.location.replace('app/app.html');
+  </script>
+
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --text: #e8eaf0;
+      --text-2: #9ba3b8;
+      --accent: #f97316;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      text-align: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .spinner {
+      width: 30px;
+      height: 30px;
+      border: 2px solid rgba(249, 115, 22, 0.2);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .muted {
+      color: var(--text-2);
+      font-size: 0.8125rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="spinner" aria-hidden="true"></div>
+  <p>Redirecting to REKABSEN…</p>
+  <p class="muted">
+    If you are not redirected automatically, <a href="app/app.html">click here</a>.
+  </p>
+</body>
+
+</html>

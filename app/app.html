@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="REKABSEN — A lightweight, open-source attendance management system for ADMS-compatible devices. Real-time monitoring, Excel export, and SQLite support." />
+  <meta name="keywords" content="REKABSEN, attendance management, ZKTeco, ADMS, open source, fingerprint attendance" />
+  <meta property="og:title" content="REKABSEN — Attendance Management. Simplified." />
+  <meta property="og:description"
+    content="A lightweight, open-source attendance management system for ADMS-compatible devices." />
+  <meta property="og:type" content="website" />
+  <title>REKABSEN — Attendance Management. Simplified.</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous" />
+
+  <!-- Inter & JetBrains Mono fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand" aria-label="REKABSEN Home">REKABSEN</a>
+
+      <ul class="nav-links" role="list">
+        <li><a class="nav-link" href="#overview">Overview</a></li>
+        <li><a class="nav-link" href="#features">Features</a></li>
+        <li><a class="nav-link" href="#installation">Installation</a></li>
+        <li><a class="nav-link" href="#documentation">Documentation</a></li>
+        <li><a class="nav-link" href="https://github.com/DrkF0rest/rekabsen-adms" target="_blank"
+            rel="noopener noreferrer">GitHub</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a class="nav-github-icon" href="https://github.com/DrkF0rest/rekabsen-adms" target="_blank"
+          rel="noopener noreferrer" aria-label="View on GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="#installation" class="btn btn-primary">Get Started</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
+          aria-controls="navDrawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer" role="dialog" aria-label="Mobile navigation">
+    <a class="nav-link" href="#overview">Overview</a>
+    <a class="nav-link" href="#features">Features</a>
+    <a class="nav-link" href="#installation">Installation</a>
+    <a class="nav-link" href="#documentation">Documentation</a>
+    <a class="nav-link" href="https://github.com/DrkF0rest/rekabsen-adms" target="_blank"
+      rel="noopener noreferrer">GitHub</a>
+    <a href="#installation" class="btn btn-primary">Get Started</a>
+  </div>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow-2" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <!-- Left: content -->
+        <div class="hero-content">
+          <h1 class="hero-title reveal" id="hero-title">
+            Attendance Management.<br />
+            <span>Simplified.</span>
+          </h1>
+
+          <p class="hero-desc reveal reveal-delay-1">
+            Everything you need to deploy, configure, and manage REKABSEN.
+            A lightweight, open-source attendance management system built for
+            simplicity and flexibility.
+          </p>
+
+          <div class="hero-actions reveal reveal-delay-2">
+            <a href="#installation" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-rocket"></i>
+              Get Started
+            </a>
+            <a href="#documentation" class="btn btn-secondary btn-lg">
+              Explore Documentation
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="hero-terminal reveal reveal-delay-3" role="region" aria-label="Quick install command">
+            <div class="hero-terminal-bar" aria-hidden="true">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot amber"></span>
+              <span class="terminal-dot green"></span>
+              <span class="hero-terminal-label">bash</span>
+            </div>
+            <div class="hero-terminal-body">
+              <span class="terminal-prompt" aria-hidden="true">$</span>
+              <span class="terminal-cmd">curl -fsSL https://rekabsen.drkforest.site/instal.sh</span>
+              <button class="terminal-copy-btn" id="heroCopyBtn" aria-label="Copy install command"
+                data-copy="curl -fsSL https://rekabsen.drkforest.site/instal.sh">
+                <i class="fa-regular fa-copy"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: mockup -->
+        <div class="hero-visual reveal reveal-delay-2">
+          <div class="hero-mockup" role="img" aria-label="REKABSEN dashboard preview">
+            <div class="mockup-topbar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot amber"></span>
+              <span class="terminal-dot green"></span>
+              <span class="mockup-topbar-title">REKABSEN — localhost:8080</span>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-stats">
+                <div class="mockup-stat">
+                  <div class="mockup-stat-label">Total Today</div>
+                  <div class="mockup-stat-value green">48</div>
+                </div>
+                <div class="mockup-stat">
+                  <div class="mockup-stat-label">On Time</div>
+                  <div class="mockup-stat-value">39</div>
+                </div>
+                <div class="mockup-stat">
+                  <div class="mockup-stat-label">Late</div>
+                  <div class="mockup-stat-value amber">9</div>
+                </div>
+              </div>
+
+              <div class="mockup-chart">
+                <div class="mockup-chart-label">Attendance — This Week</div>
+                <div class="mockup-bars" aria-hidden="true">
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                  <div class="mockup-bar"></div>
+                </div>
+              </div>
+
+              <div class="mockup-status-row">
+                <div class="mockup-status-dot" aria-hidden="true"></div>
+                <span class="mockup-status-text">Device connected · ADMS active</span>
+                <span class="mockup-status-badge">LIVE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating card -->
+          <div class="hero-floating-card" aria-hidden="true">
+            <div class="floating-card-icon"><i class="fa-solid fa-fingerprint"></i></div>
+            <div>
+              <div class="floating-card-label">Last Scan</div>
+              <div class="floating-card-value">08:47:12 WIB</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         OVERVIEW
+         ============================================================ -->
+    <section class="section-overview" id="overview" aria-labelledby="overview-heading">
+      <div class="container">
+        <div class="overview-inner">
+          <div class="section-label reveal">Overview</div>
+          <h2 class="section-heading reveal reveal-delay-1" id="overview-heading">
+            A self-hosted attendance platform built for real devices.
+          </h2>
+          <p class="overview-desc reveal reveal-delay-2">
+            REKABSEN connects directly to compatible attendance devices through ADMS,
+            allowing attendance data to be collected, monitored, and exported through a
+            lightweight self-hosted platform. Any device that supports the ADMS protocol
+            can send data to REKABSEN.
+          </p>
+
+          <div class="overview-pillars">
+            <div class="overview-pillar reveal reveal-delay-2">
+              <div class="pillar-icon"><i class="fa-solid fa-link"></i></div>
+              <div class="pillar-text">
+                <h4>ADMS Protocol Support</h4>
+                <p>Communicates directly with any ADMS-compatible attendance device via the push protocol, with no
+                  middleware required.</p>
+              </div>
+            </div>
+            <div class="overview-pillar reveal reveal-delay-3">
+              <div class="pillar-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="pillar-text">
+                <h4>Lightweight Runtime</h4>
+                <p>Powered by Python's standard <code>http.server</code>, with minimal dependencies and maximum
+                  portability.</p>
+              </div>
+            </div>
+            <div class="overview-pillar reveal reveal-delay-4">
+              <div class="pillar-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="pillar-text">
+                <h4>Secure by Default</h4>
+                <p>Hashed password authentication and server-side session management out of the box.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FEATURES
+         ============================================================ -->
+    <section class="section-features" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="features-header">
+          <div class="section-label reveal">Capabilities</div>
+          <h2 class="section-heading reveal reveal-delay-1" id="features-heading">
+            Everything you need. Nothing you don't.
+          </h2>
+          <p class="section-desc reveal reveal-delay-2">
+            REKABSEN ships with a complete feature set for real-world attendance tracking, without unnecessary
+            complexity.
+          </p>
+        </div>
+
+        <div class="features-grid reveal reveal-delay-2">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-fingerprint"></i></div>
+            <div class="feature-title">ADMS Device Integration</div>
+            <div class="feature-desc">Receives attendance data directly from compatible ADMS devices. Works with ZKTeco
+              and any device supporting the ADMS push protocol.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-wave-square"></i></div>
+            <div class="feature-title">Real-Time Monitoring</div>
+            <div class="feature-desc">Live attendance feeds delivered through Server-Sent Events. No polling, no page
+              refresh needed.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-chart-area"></i></div>
+            <div class="feature-title">Interactive Analytics</div>
+            <div class="feature-desc">Visualize attendance patterns with interactive SVG charts rendered natively in the
+              browser.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-file-excel"></i></div>
+            <div class="feature-title">Excel Report Export</div>
+            <div class="feature-desc">Export attendance reports as XLSX files with a single click using the openpyxl
+              library.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-feather"></i></div>
+            <div class="feature-title">Lightweight Architecture</div>
+            <div class="feature-desc">Built entirely on Python's standard library. No heavy frameworks or complex
+              runtime requirements.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-database"></i></div>
+            <div class="feature-title">SQLite and MySQL Support</div>
+            <div class="feature-desc">SQLite works out of the box. MySQL support available for production or multi-user
+              deployments.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-lock"></i></div>
+            <div class="feature-title">Secure Authentication</div>
+            <div class="feature-desc">Passwords are hashed and authentication is managed with server-side sessions for
+              secure access.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
+            <div class="feature-title">Multiple UI Themes</div>
+            <div class="feature-desc">Choose between a modern UI or a nostalgic Windows 95-inspired theme to match your
+              preference.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="feature-title">WIB Timezone Support</div>
+            <div class="feature-desc">Native Indonesia Western Time (WIB, UTC+7) support for accurate local attendance
+              timestamps.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TECH STACK
+         ============================================================ -->
+    <section class="section-stack" id="stack" aria-labelledby="stack-heading">
+      <div class="container">
+        <div class="stack-header">
+          <div class="section-label reveal">Technology</div>
+          <h2 class="section-heading reveal reveal-delay-1" id="stack-heading">
+            Built on proven, portable technologies.
+          </h2>
+          <p class="section-desc reveal reveal-delay-2" style="margin: 16px auto 0;">
+            Standard, dependency-light tools chosen for reliability and ease of deployment anywhere.
+          </p>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-item reveal">
+            <div class="stack-icon icon-python"><i class="fa-brands fa-python"></i></div>
+            <div class="stack-name">Python</div>
+            <div class="stack-desc">Backend runtime</div>
+          </div>
+          <div class="stack-item reveal reveal-delay-1">
+            <div class="stack-icon icon-html5"><i class="fa-brands fa-html5"></i></div>
+            <div class="stack-name">HTML5</div>
+            <div class="stack-desc">UI structure</div>
+          </div>
+          <div class="stack-item reveal reveal-delay-2">
+            <div class="stack-icon icon-css3"><i class="fa-brands fa-css3-alt"></i></div>
+            <div class="stack-name">CSS3</div>
+            <div class="stack-desc">UI styling</div>
+          </div>
+          <div class="stack-item reveal reveal-delay-3">
+            <div class="stack-icon icon-js"><i class="fa-brands fa-square-js"></i></div>
+            <div class="stack-name">JavaScript</div>
+            <div class="stack-desc">Frontend logic</div>
+          </div>
+          <div class="stack-item reveal">
+            <div class="stack-icon icon-sqlite"><i class="fa-solid fa-database"></i></div>
+            <div class="stack-name">SQLite</div>
+            <div class="stack-desc">Default database</div>
+          </div>
+          <div class="stack-item reveal reveal-delay-1">
+            <div class="stack-icon icon-mysql"><i class="fa-solid fa-server"></i></div>
+            <div class="stack-name">MySQL</div>
+            <div class="stack-desc">Optional database</div>
+          </div>
+          <div class="stack-item reveal reveal-delay-2">
+            <div class="stack-icon icon-sse"><i class="fa-solid fa-tower-broadcast"></i></div>
+            <div class="stack-name">Server-Sent Events</div>
+            <div class="stack-desc">Real-time push</div>
+          </div>
+          <div class="stack-item reveal reveal-delay-3">
+            <div class="stack-icon icon-openpyxl"><i class="fa-solid fa-file-excel"></i></div>
+            <div class="stack-name">openpyxl</div>
+            <div class="stack-desc">Excel export</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         INSTALLATION
+         ============================================================ -->
+    <section class="section-install" id="installation" aria-labelledby="install-heading">
+      <div class="container">
+        <div class="install-inner">
+          <div class="install-content">
+            <div class="section-label reveal">Quick Start</div>
+            <h2 class="section-heading reveal reveal-delay-1" id="install-heading">
+              Get Started in Minutes.
+            </h2>
+            <p class="section-desc reveal reveal-delay-2" style="margin: 16px 0 0;">
+              REKABSEN is designed for minimal-friction deployment. Choose your preferred installation method below.
+            </p>
+
+            <div class="install-steps">
+              <div class="install-step reveal reveal-delay-2">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                  <h4>Install REKABSEN</h4>
+                  <p>Run the one-line installer on Linux/macOS, or clone and run manually on Windows.</p>
+                </div>
+              </div>
+              <div class="install-step reveal reveal-delay-3">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                  <h4>Open the dashboard</h4>
+                  <p>Access the admin dashboard at <code>http://localhost:8080</code> once the server starts.</p>
+                </div>
+              </div>
+              <div class="install-step reveal reveal-delay-4">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                  <h4>Connect your device</h4>
+                  <p>Point your ADMS device's server address to your REKABSEN host to begin receiving attendance data.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 36px;" class="reveal reveal-delay-4">
+              <a href="#documentation" class="btn btn-secondary">
+                <i class="fa-solid fa-book"></i>
+                Full Installation Guide
+              </a>
+            </div>
+          </div>
+
+          <!-- Tabbed terminal panel -->
+          <div class="install-terminal reveal reveal-delay-2" role="region" aria-label="Installation terminal">
+            <div class="terminal-topbar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot amber"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-topbar-title">install</span>
+              <button class="terminal-copy-action" id="installCopyBtn" aria-label="Copy install command">
+                <i class="fa-regular fa-copy"></i>
+                <span>Copy</span>
+              </button>
+            </div>
+
+            <div class="terminal-tabs" role="tablist" aria-label="Installation method">
+              <button class="terminal-tab active" role="tab" aria-selected="true" data-tab="bash">bash</button>
+              <button class="terminal-tab" role="tab" aria-selected="false" data-tab="powershell">powershell</button>
+            </div>
+
+            <!-- bash panel -->
+            <div class="terminal-panel active" id="panel-bash" role="tabpanel"
+              data-copy="curl -fsSL https://rekabsen.drkforest.site/instal.sh">
+              <div class="terminal-content">
+                <div><span class="t-comment"># Install REKABSEN with a single command</span></div>
+                <div>&nbsp;</div>
+                <div><span class="t-prompt">$</span> <span class="t-cmd">curl -fsSL
+                    https://rekabsen.drkforest.site/instal.sh</span></div>
+                <div>&nbsp;</div>
+                <div><span class="t-output">Downloading REKABSEN...</span></div>
+                <div><span class="t-output">Configuring environment...</span></div>
+                <div><span class="t-output">Starting server...</span></div>
+                <div>&nbsp;</div>
+                <div><span class="t-output">✓ REKABSEN is running at </span><span
+                    class="t-url">http://localhost:8080</span></div>
+                <div>&nbsp;</div>
+                <div><span class="t-prompt">$</span> <span class="t-cursor"></span></div>
+              </div>
+            </div>
+
+            <!-- powershell panel -->
+            <div class="terminal-panel" id="panel-powershell" role="tabpanel"
+              data-copy="git clone https://github.com/DrkF0rest/rekabsen-adms.git&#10;cd rekabsen-adms&#10;python -m pip install -r requirements.txt &amp;&amp; python -m rekabsen">
+              <div class="terminal-content">
+                <div><span class="t-comment"># Clone the repository</span></div>
+                <div>&nbsp;</div>
+                <div><span class="t-ps-prompt">PS&gt;</span> <span class="t-cmd">git clone
+                    https://github.com/DrkF0rest/rekabsen-adms.git</span></div>
+                <div><span class="t-ps-prompt">PS&gt;</span> <span class="t-cmd">cd rekabsen-adms</span></div>
+                <div>&nbsp;</div>
+                <div><span class="t-comment"># Install dependencies and run</span></div>
+                <div>&nbsp;</div>
+                <div><span class="t-ps-prompt">PS&gt;</span> <span class="t-cmd">python -m pip install -r
+                    requirements.txt &amp;&amp; python -m rekabsen</span></div>
+                <div>&nbsp;</div>
+                <div><span class="t-output">✓ REKABSEN is running at </span><span
+                    class="t-url">http://localhost:8080</span></div>
+                <div>&nbsp;</div>
+                <div><span class="t-ps-prompt">PS&gt;</span> <span class="t-cursor"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DOCUMENTATION
+         ============================================================ -->
+    <section class="section-docs" id="documentation" aria-labelledby="docs-heading">
+      <div class="container">
+        <div class="docs-header">
+          <div class="section-label reveal">Documentation</div>
+          <h2 class="section-heading reveal reveal-delay-1" id="docs-heading">
+            Everything in one place.
+          </h2>
+          <p class="section-desc reveal reveal-delay-2" style="margin-top: 12px;">
+            Comprehensive documentation for every stage of your REKABSEN deployment.
+          </p>
+        </div>
+
+        <div class="docs-grid">
+          <div class="doc-card reveal">
+            <div class="doc-card-icon" style="background: rgba(249,115,22,0.1); color: var(--color-accent);">
+              <i class="fa-solid fa-flag"></i>
+            </div>
+            <div class="doc-card-title">Getting Started</div>
+            <div class="doc-card-desc">Introduction to REKABSEN, prerequisites, and an overview of what the system does.
+            </div>
+            <div class="doc-card-link">Read guide <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <div class="doc-card reveal reveal-delay-1">
+            <div class="doc-card-icon" style="background: rgba(96,165,250,0.1); color: var(--color-blue);">
+              <i class="fa-solid fa-download"></i>
+            </div>
+            <div class="doc-card-title">Installation Guide</div>
+            <div class="doc-card-desc">Step-by-step installation instructions, system requirements, and directory
+              layout.</div>
+            <div class="doc-card-link">Read guide <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <div class="doc-card reveal reveal-delay-2">
+            <div class="doc-card-icon" style="background: rgba(167,139,250,0.1); color: var(--color-purple);">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
+            <div class="doc-card-title">Configuration</div>
+            <div class="doc-card-desc">Environment variables, server configuration, theme selection, and runtime
+              options.</div>
+            <div class="doc-card-link">Read guide <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <div class="doc-card reveal reveal-delay-3">
+            <div class="doc-card-icon" style="background: rgba(34,197,94,0.1); color: var(--color-green);">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="doc-card-title">Database Configuration</div>
+            <div class="doc-card-desc">Configure SQLite for local use or switch to MySQL for production deployments.
+            </div>
+            <div class="doc-card-link">Read guide <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <div class="doc-card reveal">
+            <div class="doc-card-icon" style="background: rgba(249,115,22,0.1); color: var(--color-accent);">
+              <i class="fa-solid fa-fingerprint"></i>
+            </div>
+            <div class="doc-card-title">ADMS Device Integration</div>
+            <div class="doc-card-desc">Configure your ADMS-compatible device to push attendance data directly to
+              REKABSEN.</div>
+            <div class="doc-card-link">Read guide <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <div class="doc-card reveal reveal-delay-1">
+            <div class="doc-card-icon" style="background: rgba(249,115,22,0.1); color: #fb923c;">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <div class="doc-card-title">MySQL Setup</div>
+            <div class="doc-card-desc">Set up MySQL normally. Create a database named <code>rekabsen</code> and
+              configure the connection in REKABSEN settings.</div>
+            <div class="doc-card-link">Read guide <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+
+          <div class="doc-card reveal reveal-delay-2">
+            <div class="doc-card-icon" style="background: rgba(239,68,68,0.1); color: #f87171;">
+              <i class="fa-solid fa-wrench"></i>
+            </div>
+            <div class="doc-card-title">Troubleshooting</div>
+            <div class="doc-card-desc">Common issues, diagnostics, error messages, and solutions for typical deployment
+              problems.</div>
+            <div class="doc-card-link">Read guide <i class="fa-solid fa-arrow-right"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         OPEN SOURCE
+         ============================================================ -->
+    <section class="section-oss" id="opensource" aria-labelledby="oss-heading">
+      <div class="oss-bg-glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="oss-inner">
+          <div class="oss-icon reveal"><i class="fa-brands fa-github"></i></div>
+          <h2 class="oss-title reveal reveal-delay-1" id="oss-heading">
+            Built for Everyone.<br />Open for Everyone.
+          </h2>
+          <p class="oss-desc reveal reveal-delay-2">
+            REKABSEN is open source. Explore the project, contribute improvements, and build on top of it.
+          </p>
+
+          <div class="oss-actions reveal reveal-delay-3">
+            <a href="https://github.com/DrkF0rest/rekabsen-adms" target="_blank" rel="noopener noreferrer"
+              class="btn btn-primary btn-lg">
+              <i class="fa-brands fa-github"></i>
+              View on GitHub
+            </a>
+            <a href="#installation" class="btn btn-ghost btn-lg">
+              <i class="fa-solid fa-rocket"></i>
+              Get Started
+            </a>
+          </div>
+
+          <div class="oss-divider reveal reveal-delay-4">
+            <span>MIT License</span>
+          </div>
+
+          <p class="reveal reveal-delay-4" style="font-size: 0.8125rem; color: var(--color-text-3);">
+            Free to use, free to modify, free to share.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand-name">REKABSEN</div>
+          <p class="footer-brand-desc">
+            A lightweight, open-source attendance management system for ADMS-compatible devices.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Product</div>
+          <ul class="footer-links" role="list">
+            <li><a class="footer-link" href="#overview">Overview</a></li>
+            <li><a class="footer-link" href="#features">Features</a></li>
+            <li><a class="footer-link" href="#stack">Technology</a></li>
+            <li><a class="footer-link" href="#installation">Installation</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Documentation</div>
+          <ul class="footer-links" role="list">
+            <li><a class="footer-link" href="#documentation">Getting Started</a></li>
+            <li><a class="footer-link" href="#documentation">Installation Guide</a></li>
+            <li><a class="footer-link" href="#documentation">Configuration</a></li>
+            <li><a class="footer-link" href="#documentation">Troubleshooting</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Project</div>
+          <ul class="footer-links" role="list">
+            <li>
+              <a class="footer-link" href="https://github.com/DrkF0rest/rekabsen-adms" target="_blank"
+                rel="noopener noreferrer">GitHub</a>
+            </li>
+            <li>
+              <a class="footer-link" href="https://rekabsen.drkforest.site/" target="_blank"
+                rel="noopener noreferrer">Website</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; <span id="footerYear"></span> REKABSEN. Released under the MIT License.
+        </p>
+        <div class="footer-links-row">
+          <a href="https://github.com/DrkF0rest/rekabsen-adms" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="#documentation">Documentation</a>
+          <a href="#installation">Installation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="fa-solid fa-check-circle"></i>
+    <span id="toastMsg">Copied to clipboard</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
