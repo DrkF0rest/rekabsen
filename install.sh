@@ -1,10 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
-APP=rekabsen
+APP_NAME=rekabsen
 REPO=https://github.com/DrkF0rest/rekabsen-adms.git
-DIR=/etc/rekabsen
-LOG=/var/log/rekabsen
+APP_DIR=/etc/rekabsen
+LOG_DIR=/var/log/rekabsen
 
 # Monokai
 PINK='\033[38;5;197m' GREEN='\033[38;5;148m' YELLOW='\033[38;5;186m'

@@ -1,8 +1,7 @@
 #!/bin/bash
-set -Eeuo pipefail
+set -euo pipefail
 
 APP_NAME="rekabsen"
-
 APP_DIR="/etc/rekabsen"
 LOG_DIR="/var/log/rekabsen"
 SERVICE_FILE="/etc/systemd/system/rekabsen.service"
