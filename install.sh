@@ -57,14 +57,12 @@ chown -R $APP_NAME:$APP_NAME "$APP_DIR" "$LOG_DIR"
 ok "Permissions configured"
 
 step 5 "Systemd"
-cat > /etc/systemd/system/$APP_NAME.service <<EOF
+cat > /etc/systemd/system/$APP.service <<EOF
 [Unit]
 Description=Rekabsen ADMS Server by DrkF0rest
 After=network.target
 
 [Service]
-User=$APP_NAME
-Group=$APP_NAME
 WorkingDirectory=$APP_DIR
 ExecStart=$APP_DIR/venv/bin/python3 $APP_DIR/adms_server.py
 Restart=on-failure
