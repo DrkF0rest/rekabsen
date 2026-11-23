@@ -38,11 +38,11 @@ run "Installing packages" apt-get install -y -qq git python3 python3-venv python
 
 step 2 "Repository"
 run "Cloning repository" git clone --depth 1 --branch rekabsen-adms "$REPO"
-[[ -f $APP_DIR/adms_server.py ]] || die "adms_server.py not found"
 mv "$APP_NAME/adms_server.py" "$APP_DIR"
 mv "$APP_NAME/requirements.txt" "$APP_DIR"
 mv "$APP_NAME/adms" "$APP_DIR"
 mv "$APP_NAME/backend" "$APP_DIR"
+[[ -f $APP_DIR/adms_server.py ]] || die "adms_server.py not found"
 
 step 3 "Python environment"
 run "Creating virtualenv" python3 -m venv "$APP_DIR/venv"
