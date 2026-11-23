@@ -37,7 +37,7 @@ run "Updating package index" apt-get update -qq
 run "Installing packages" apt-get install -y -qq git python3 python3-venv python3-pip
 
 step 2 "Repository"
-run "Cloning repository" git clone --depth 1 --branch rekabsen "$REPO" "$DIR"
+run "Cloning repository" git clone --depth 1 --branch rekabsen-adms "$REPO" "$DIR"
 [[ -f $DIR/adms_server.py ]] || die "adms_server.py not found"
 
 step 3 "Python environment"
